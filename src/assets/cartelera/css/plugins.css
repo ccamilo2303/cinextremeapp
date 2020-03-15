@@ -1,0 +1,4 @@
+@font-face { font-family: "Ionicons"; src: url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/fonts/ionicons.eot"); src: url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/fonts/ionicons.eot") format("embedded-opentype"), url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/fonts/ionicons.ttf") format("truetype"), url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/fonts/ionicons.woff") format("woff"), url("https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/fonts/ionicons.svg") format("svg"); font-weight: normal; font-style: normal; }
+.ion, .ion-play:before { display: inline-block; font-family: "Ionicons"; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; text-rendering: auto; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.ion-android-playstore:before { content: "\f2f0"; }
+.ion-play:before { content: "\f215"; }

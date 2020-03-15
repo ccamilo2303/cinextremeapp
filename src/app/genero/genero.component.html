@@ -1,0 +1,166 @@
+<!-- BEGIN | Header -->
+<header class="ht-header full-width-hd">
+    <!--preloading-->
+    <div id="preloader">
+        <img class="logo" src="../../assets/cartelera/images/Logo.png" alt="" width="20%" height=auto>
+        <div id="status">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!--end of preloading-->
+    <div class="row">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header logo">
+                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menú de navegación</span>
+                    <div id="nav-icon1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <a [routerLink]="['/cartelera']"><img class="logo" src="../../assets/cartelera/images/Logo.png" alt="" width="80%" height="58"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav flex-child-menu menu-left">
+                    <li>
+                        <a class="btn btn-default" [routerLink]="['/cartelera']">
+							Pelciulas 
+							</a>
+                    </li>
+                    <li class="dropdown first">
+                        <a class="btn btn-default" data-toggle="dropdown" data-hover="dropdown">
+							Géneros <i class="fa fa-angle-down" aria-hidden="true"></i>
+							</a>
+                        <ul class="dropdown-menu level1">
+
+                            <li *ngFor="let x of generos ; let i = index">
+                                <a [routerLink]="['/cartelera']" (click)="consultarGenero(x.id_gender, x.name_gender)">{{x.name_gender}}</a>
+
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown first">
+                        <a class="btn btn-default " [routerLink]="['/cartelera']" (click)="pedirPelicula();" data-toggle="dropdown" data-hover="dropdown">
+							Pedir Pelicula 
+							</a>
+
+                    </li>
+                    <li class="dropdown first">
+                        <a href="comingsoon.html" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
+							Series 
+							</a>
+
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav flex-child-menu menu-right">
+                    <li class="loginLink"><a href="#">Mi Cuenta</a></li>
+                    <li class="btn signupLink"><a href="#">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- search form -->
+    </div>
+
+</header>
+<!-- END | Header -->
+
+<div class="slider sliderv2">
+    <div class="container">
+        <div class="row">
+            <div class="slider-single-item">
+                <div class="movie-item">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12 col-xs-12">
+                            <div class="title-in">
+                                <div class="cate">
+                                    <span class="blue"><a href="#">Crimen</a></span>
+                                    <span class="yell"><a href="#">Action</a></span>
+                                    <span class="orange"><a href="#">Comedia</a></span>
+                                </div>
+                                <h1><a [routerLink]="['/cartelera']">Aves de Presa (y la Fantabulosa Emancipación de Harley Quinn) <span>2020</span></a></h1>
+                                <div class="social-btn">
+                                    <a [routerLink]="['/cartelera']" class="parent-btn"><i class="ion-play"></i> Reproducir</a>
+
+                                </div>
+                                <div class="mv-details">
+                                    <p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+                                    <ul class="mv-infor">
+                                        <li> Duración: 1h19m </li>
+                                        <li> Rated: PG-13 </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="mv-img-2">
+                                <a href="#"><img [src]="ipImagenTMDB +'4GCqF17I2ST5M8iSkwh1jwqvi7F.jpg'" alt="" style="height: 400px;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- INICIO DE PELICULAS-->
+
+<div class="page-single">
+    <div class="container">
+
+        <h1 class="loginLink"><a [routerLink]="['/cartelera']">{{nombre}}</a></h1>
+        <hr>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="flex-wrap-movielist mv-grid-fw">
+
+                    <div class="movie-item-style-2 movie-item-style-1" *ngFor="let pelicula of peliculas | paginate: { itemsPerPage: 20, currentPage: p }">
+                        <img [src]="ipImagenTMDB +pelicula.url_Img" alt="">
+                        <div class="hvr-inner">
+                            <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir <i class="ion-android-arrow-dropright"></i> </a>
+                        </div>
+                        <div class="mv-item-infor">
+                            <h6><a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]">{{pelicula.name_Movie}}</a></h6>
+                            <p class="rate"><i class="ion-android-star"></i><span> {{ (pelicula.vote_average / 2).toFixed(1)}}</span> /5</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="topbar-filter">
+                    <div class="pagination2">
+                        <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FIN DE PELICULAS-->
+
+<!--end of latest new v2 section-->
+<!-- footer v2 section-->
+<footer class="ht-footer full-width-ft">
+    <div class="row">
+        <div class="flex-parent-ft">
+            <div class="flex-child-ft item1">
+                <a href="index-2.html"><img class="logo" src="../../assets/cartelera/images/Logo.png" alt=""></a>
+            </div>
+            <div class="flex-child-ft item2">
+                <h4>© Copyright CineXtreme 2020. Todos los derechos reservados</h4>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end of footer v2 section-->
+<div id="scriptsTemp"> </div>
