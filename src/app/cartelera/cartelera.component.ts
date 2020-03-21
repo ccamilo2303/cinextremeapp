@@ -18,7 +18,7 @@ export class CarteleraComponent implements OnInit {
   public generos : any;
   public ipImagenTMDB :string;
   public pageOfItems : Array<any>;
-
+  public p : any;
   
   constructor(private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService, private router: Router) {
     this.ipImagenTMDB = environment.ipImagenTMDB;

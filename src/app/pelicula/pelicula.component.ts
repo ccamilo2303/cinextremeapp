@@ -47,10 +47,19 @@ export class PeliculaComponent implements OnInit {
         }
 
         this.url = r[0]['url_movie'];
-
+        console.log("--------------------> ", p['idTMDB']);
         this.descripcion = r[0]['description_Movie'];
         document.getElementById('contenedorVideo').innerHTML = '<div class="videoContainer self-video" id="video130" data-vidid="' + r[0]['url_movie'] + '"> <div class="closeVideo">&times;</div> </div>'
-        this.theMovieDataBaseService.consultarImagenesPelicula(p['idTMDB']).subscribe(i => {
+        for(let x = 1 ; x <= 4 ; x ++){
+          this.imagenes.push("http://www.cinextreme.co/resources/cartelera/"+p['idTMDB']+"/"+x+".jpg");
+        }
+        console.log('', this.imagenes);
+
+        setTimeout( ()=> {
+          this.loadScript();
+        }, 500);
+        
+        /*this.theMovieDataBaseService.consultarImagenesPelicula(p['idTMDB']).subscribe(i => {
           for (let img of i['backdrops']) {
             this.imagenes.push(img);
           }
@@ -58,7 +67,7 @@ export class PeliculaComponent implements OnInit {
             this.loadScript();
           }, 500);
           
-        });
+        });*/
 
         
       }, err => {

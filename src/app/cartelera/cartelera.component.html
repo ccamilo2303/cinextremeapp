@@ -119,7 +119,7 @@
                 <div class="flex-wrap-movielist mv-grid-fw">
 
                     <div class="movie-item-style-2 movie-item-style-1" *ngFor="let pelicula of peliculas | paginate: { itemsPerPage: 20, currentPage: p }">
-                        <img [src]="ipImagenTMDB +pelicula.url_Img" alt="">
+                        <img [src]="pelicula.url_Img" alt="">
                         <div class="hvr-inner">
                             <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir <i class="ion-android-arrow-dropright"></i> </a>
                         </div>

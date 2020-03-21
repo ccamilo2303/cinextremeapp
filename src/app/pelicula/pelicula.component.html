@@ -2,10 +2,6 @@
 <link rel='stylesheet' href='/assets/cssPelicula/style.css' type='text/css' media='all' />
 <link rel='stylesheet' href='/assets/cssPelicula/css/respond.css' type='text/css' media='all' />
 
-<!--SITE URL SETTING FOR AJAX REQUESTS-->
-<script>
-    var siteUrl = 'http://themolitor.com/vysual_html';
-</script>
 
 <div class="home page page-template-page-reviews ajax-on">
 
@@ -54,8 +50,8 @@
 
         <!--IMAGE SLIDESHOW-->
         <div id="headerImages">
-            <div *ngFor="let i of imagenes; let indice= index" class="header-image {{indice == 0 ? 'activeBg' : ''}}" [ngStyle]="{'background-image' : 'url('+ (ipImagenTMDB + i.file_path) +')'}">
-                <img [src]="ipImagenTMDB + i.file_path" alt="">
+            <div *ngFor="let i of imagenes; let indice= index" class="header-image {{indice == 0 ? 'activeBg' : ''}}" [ngStyle]="{'background-image' : 'url('+ (i) +')'}">
+                <img [src]="i" alt="">
             </div>
 
         </div>

@@ -21,6 +21,7 @@ export class GeneroComponent implements OnInit {
   public pageOfItems: Array<any>;
   public id: any;
   public nombre: any;
+  public p : any;
 
   constructor(private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService,
     private router: Router, private route: ActivatedRoute) {
@@ -99,6 +100,13 @@ export class GeneroComponent implements OnInit {
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
     this.pageOfItems = pageOfItems;
+  }
+    /**
+   * @param id 
+   * @param name 
+   */
+  consultarGenero(id, name){
+    this.router.navigate(['/genero', id, name]);
   }
 
   async loadScript() {
