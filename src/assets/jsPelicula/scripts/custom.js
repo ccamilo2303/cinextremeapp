@@ -971,7 +971,7 @@ jQuery(document).on('click', '.videoLink', function() {
     //LOAD PLAYER
     if (videoContainer.hasClass('self-video')) {
 
-        videoContainer.append('<div class="embed-container"> <iframe  src="' + videoId + '" id="movie" width="640" height="480" frameborder="0" allowfullscreen></iframe> </div>');
+        videoContainer.append('<div class="embed-container" id="embed-t"> <iframe  src="' + videoId + '" id="movie" width="640" height="480" frameborder="0" allowfullscreen></iframe> </div>');
         videoContainer.append('<style>.embed-container {position: relative;height: 100%;overflow: hidden;}.16by9 {padding-bottom: 56.25%;}.4by3 {padding-bottom: 75%;}.embed-container iframe {position: absolute;top:0;left: 0;width: 100%;height: 100%;}body{background:black;}</style>');
     }
 
@@ -1000,6 +1000,8 @@ jQuery(document).on('click', '.videoLink', function() {
 //CLOSE VIDEO FUNCTION
 function closeVideo() {
 
+
+
     Tawk_API.showWidget();
 
     var videoContainer = jQuery('.videoContainer');
@@ -1019,6 +1021,7 @@ function closeVideo() {
     }
 
     theBody.removeClass('full-screen-video');
+    document.getElementById('embed-t').remove();
 }
 //CLOSE VIDEO CLICK
 jQuery(document).on('click', '.closeVideo', function() {
