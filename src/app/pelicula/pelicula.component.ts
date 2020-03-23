@@ -20,9 +20,7 @@ export class PeliculaComponent implements OnInit {
   public descripcion:string;
 
   constructor(private route: ActivatedRoute, private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService) {
-    this.scripts.push("/assets/jsPelicula/scripts/jquery.js");
-    this.scripts.push("/assets/jsPelicula/scripts/jquery-migrate-1.4.1.min.js");
-    this.scripts.push("/assets/jsPelicula/scripts/spin.js");
+  
     this.scripts.push("/assets/jsPelicula/scripts/custom.js");
     
    }
@@ -47,27 +45,16 @@ export class PeliculaComponent implements OnInit {
         }
 
         this.url = r[0]['url_movie'];
-        console.log("--------------------> ", p['idTMDB']);
         this.descripcion = r[0]['description_Movie'];
         document.getElementById('contenedorVideo').innerHTML = '<div class="videoContainer self-video" id="video130" data-vidid="' + r[0]['url_movie'] + '"> <div class="closeVideo">&times;</div> </div>'
         for(let x = 1 ; x <= 1 ; x ++){
           this.imagenes.push(environment.direccion + p['idTMDB']+"/"+x+".jpg");
         }
-        console.log('', this.imagenes);
 
         setTimeout( ()=> {
           this.loadScript();
         }, 500);
         
-        /*this.theMovieDataBaseService.consultarImagenesPelicula(p['idTMDB']).subscribe(i => {
-          for (let img of i['backdrops']) {
-            this.imagenes.push(img);
-          }
-          setTimeout( ()=> {
-            this.loadScript();
-          }, 500);
-          
-        });*/
 
         
       }, err => {

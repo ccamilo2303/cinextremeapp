@@ -27,7 +27,8 @@
               "src/styles.css"
             ],
             "scripts": [
-			"src/assets/js/scriptChat.js"
+				"src/assets/js/scriptChat.js",
+				"src/assets/cartelera/js/jquery.js"
 			]
           },
           "configurations": {

@@ -32,9 +32,6 @@ export class CarteleraComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.scripts.push("../../assets/cartelera/js/jquery.js");
-    this.scripts.push("../../assets/cartelera/js/plugins.js");
-    this.scripts.push("../../assets/cartelera/js/plugins2.js");
     this.scripts.push("../../assets/cartelera/js/custom.js");
     this.loadScript();
 
