@@ -4,7 +4,7 @@ import { TheMovieDataBaseService } from '../the-movie-data-base.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { environment } from './../../environments/environment';
-
+declare var $: any;
 
 @Component({
   selector: 'app-cartelera',
@@ -20,6 +20,13 @@ export class CarteleraComponent implements OnInit {
   public pageOfItems : Array<any>;
   public p : any;
   
+  public inicio : any;
+  public fin : any;
+  public anterior:any;
+  public siguiente:any;
+  public inicioUrl:any;
+  public finUrl:any;
+
   constructor(private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService, private router: Router) {
     this.ipImagenTMDB = environment.ipImagenTMDB;
    }
@@ -33,7 +40,13 @@ export class CarteleraComponent implements OnInit {
 
 
     this.httpService.consultarCartelera().subscribe(result => {
-      this.peliculas = result;
+      this.peliculas = result['data'];
+      this.inicio = result['current_page'];
+      this.fin = result['last_page'];
+      this.anterior = result['prev_page_url'];
+      this.siguiente = result['next_page_url'];
+      this.inicioUrl = result['first_page_url'];
+      this.finUrl = result['last_page_url'];
     }, err => {
       Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
     });
@@ -46,6 +59,7 @@ export class CarteleraComponent implements OnInit {
     });
 
   }
+  
 
   pedirPelicula(){
     Swal.mixin({
@@ -105,8 +119,95 @@ export class CarteleraComponent implements OnInit {
 
   }
 
+  paginaAnterior(){
+    this.httpService.consultarCarteleraUrl(this.anterior).subscribe(result => {
+      top();
+      this.cargarPeliculas(result['data']);
+      this.inicio = result['current_page'];
+      this.fin = result['last_page'];
+      this.anterior = result['prev_page_url'];
+      this.siguiente = result['next_page_url'];
+      this.inicioUrl = result['first_page_url'];
+      this.finUrl = result['last_page_url'];
+    }, err => {
+      Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
+    });
+
+  }
+
+  paginaSiguiente(){
+    this.httpService.consultarCarteleraUrl(this.siguiente).subscribe(result => {
+      top();
+      this.cargarPeliculas(result['data']);
+      this.inicio = result['current_page'];
+      this.fin = result['last_page'];
+      this.anterior = result['prev_page_url'];
+      this.siguiente = result['next_page_url'];
+      this.inicioUrl = result['first_page_url'];
+      this.finUrl = result['last_page_url'];
+    }, err => {
+      Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
+    });
+  }
+
+  paginaInicio(){
+    this.httpService.consultarCarteleraUrl(this.inicioUrl).subscribe(result => {
+      top();
+      this.cargarPeliculas(result['data']);
+      this.inicio = result['current_page'];
+      this.fin = result['last_page'];
+      this.anterior = result['prev_page_url'];
+      this.siguiente = result['next_page_url'];
+      this.inicioUrl = result['first_page_url'];
+      this.finUrl = result['last_page_url'];
+    }, err => {
+      Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
+    });
+  }
+
+  paginaFin(){
+    this.httpService.consultarCarteleraUrl(this.finUrl).subscribe(result => {
+      top();
+      this.cargarPeliculas(result['data']);
+      this.inicio = result['current_page'];
+      this.fin = result['last_page'];
+      this.anterior = result['prev_page_url'];
+      this.siguiente = result['next_page_url'];
+      this.inicioUrl = result['first_page_url'];
+      this.finUrl = result['last_page_url'];
+    }, err => {
+      Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
+    });
+  }
+
+  intervalo ;
+  indice:number = 0;
+  listaTemporal = null;
+  cargarPeliculas(lista){
+    if(this.listaTemporal == null){
+      this.listaTemporal = lista;
+    }
+    this.peliculas = new Array();
+
+    this.intervalo = setInterval(() =>{
+
+      if(this.indice < this.listaTemporal.length){
+        this.peliculas.push(this.listaTemporal[this.indice]);
+        this.indice = this.indice + 1;
+      }else{
+        this.indice = 0 ;
+        this.listaTemporal = null;
+        clearInterval(this.intervalo);
+      }
+    }, 250);
+  }
+
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function top(){
+    //$("html, body").animate({ scrollTop: 400 }, "slow");
 }

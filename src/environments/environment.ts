@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   ipServicio: 'http://cinextreme.co/public/',
-
+  direccion: "http://www.cinextreme.co/resources/cartelera/",
   ipImagenTMDB: 'https://image.tmdb.org/t/p/original/',
   ipBaseTMDB: 'https://api.themoviedb.org/3/movie/',
   keyTMDB: 'e38bdcb99eda95bae467ac8f3dd8684f',

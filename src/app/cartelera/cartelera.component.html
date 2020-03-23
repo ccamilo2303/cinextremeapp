@@ -121,7 +121,7 @@
                     <div class="movie-item-style-2 movie-item-style-1" *ngFor="let pelicula of peliculas | paginate: { itemsPerPage: 20, currentPage: p }">
                         <img [src]="pelicula.url_Img" alt="">
                         <div class="hvr-inner">
-                            <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir <i class="ion-android-arrow-dropright"></i> </a>
+                            <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir </a>
                         </div>
                         <div class="mv-item-infor">
                             <h6><a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]">{{pelicula.name_Movie}}</a></h6>
@@ -135,7 +135,13 @@
 
                 <div class="topbar-filter">
                     <div class="pagination2">
-                        <pagination-controls (pageChange)="p = $event" responsive="true" previousLabel="Anterior" nextLabel="Siguiente" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="You're on page"></pagination-controls>
+                        <div class="pagination2">
+                            <span>Página {{inicio}} de {{fin}}:</span>
+                            <a href="#" onclick="return false;" (click)="paginaInicio()" *ngIf="inicio > 1">Inicio</a>
+                            <a href="#" onclick="return false;" (click)="paginaAnterior()" *ngIf="inicio > 1">Anterior</a>
+                            <a href="#" onclick="return false;" (click)="paginaSiguiente()" *ngIf="inicio < fin">Siguiente</a>
+                            <a href="#" onclick="return false;" (click)="paginaFin()" *ngIf="inicio < fin">Fin</a>
+                        </div>
                     </div>
                 </div>
             </div>

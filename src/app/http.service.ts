@@ -14,6 +14,12 @@ export class HttpService {
     return this.httpClient.get(environment.ipServicio+'consulta');
 
   }
+  
+  consultarCarteleraUrl(url){
+
+    return this.httpClient.get(url);
+
+  }
 
   consultarPelicula(id){
 

@@ -51,7 +51,7 @@ export class PeliculaComponent implements OnInit {
         this.descripcion = r[0]['description_Movie'];
         document.getElementById('contenedorVideo').innerHTML = '<div class="videoContainer self-video" id="video130" data-vidid="' + r[0]['url_movie'] + '"> <div class="closeVideo">&times;</div> </div>'
         for(let x = 1 ; x <= 1 ; x ++){
-          this.imagenes.push("http://www.cinextreme.co/resources/cartelera/"+p['idTMDB']+"/"+x+".jpg");
+          this.imagenes.push(environment.direccion + p['idTMDB']+"/"+x+".jpg");
         }
         console.log('', this.imagenes);
 
@@ -96,3 +96,4 @@ export class PeliculaComponent implements OnInit {
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
