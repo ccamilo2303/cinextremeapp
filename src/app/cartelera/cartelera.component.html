@@ -123,6 +123,9 @@
                         <div class="hvr-inner">
                             <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir </a>
                         </div>
+                        <div class="hvr-inner2">
+                            <a > Trailer </a>
+                        </div>
                         <div class="mv-item-infor">
                             <h6><a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]">{{pelicula.name_Movie}}</a></h6>
                             <p class="rate"><i class="ion-android-star"></i><span> {{ (pelicula.vote_average / 2).toFixed(1)}}</span> /5</p>
