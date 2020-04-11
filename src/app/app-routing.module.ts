@@ -1,24 +1,35 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { CarteleraComponent } from './cartelera/cartelera.component';
 import { GeneroComponent } from './genero/genero.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
+import { SeriesComponent } from './series/series.component';
+import {  AuthGuardService as AuthGuard  } from './auth-guard.service';
 
 const routes: Routes = [{
   path: 'cartelera',
-  component: CarteleraComponent
+  component: CarteleraComponent,
+  canActivate: [AuthGuard]
 },
 {
   path: 'genero/:id/:nombre',
-  component: GeneroComponent
+  component: GeneroComponent,
+  canActivate: [AuthGuard]
 },
 {
   path: 'pelicula/:idTMDB/:nombre',
-  component: PeliculaComponent
+  component: PeliculaComponent,
+  canActivate: [AuthGuard]
+},
+{
+  path: 'series',
+  component: SeriesComponent,
+  canActivate: [AuthGuard]
 },
 {
   path: '**',
-  redirectTo: 'cartelera'
+  redirectTo: 'cartelera',
+  canActivate: [AuthGuard]
 }
 ];
 

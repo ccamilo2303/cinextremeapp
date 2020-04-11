@@ -8,13 +8,15 @@ import { CarteleraComponent } from './cartelera/cartelera.component';
 import { GeneroComponent } from './genero/genero.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PeliculaComponent } from './pelicula/pelicula.component';
+import { SeriesComponent } from './series/series.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarteleraComponent,
     GeneroComponent,
-    PeliculaComponent
+    PeliculaComponent,
+    SeriesComponent
   ],
   imports: [
     BrowserModule,

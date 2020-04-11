@@ -2,7 +2,7 @@
 <header class="ht-header full-width-hd">
     <!--preloading-->
     <div id="preloader">
-        <img class="logo" src="../../assets/cartelera/images/Logo.png" alt="" width="20%" height=auto>
+        <img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="20%" height=auto>
         <div id="status">
             <span></span>
             <span></span>
@@ -21,14 +21,14 @@
                         <span></span>
                     </div>
                 </div>
-                <a [routerLink]="['/cartelera']"><img class="logo" src="../../assets/cartelera/images/Logo.png" alt="" width="80%" height="58"></a>
+                <a [routerLink]="['/cartelera']" (click)="iniciar()"><img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="80%" height="58"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav flex-child-menu menu-left">
                     <li>
-                        <a class="btn btn-default" [routerLink]="['/cartelera']">
-							Pelciulas 
+                        <a class="btn btn-default" [routerLink]="['/cartelera']" (click)="iniciar()">
+							Películas
 							</a>
                     </li>
                     <li class="dropdown first">
@@ -46,20 +46,20 @@
                     </li>
                     <li class="dropdown first">
                         <a class="btn btn-default " [routerLink]="['/cartelera']" (click)="pedirPelicula();" data-toggle="dropdown" data-hover="dropdown">
-							Pedir Pelicula 
+							Pedir Película 
 							</a>
 
                     </li>
                     <li class="dropdown first">
-                        <a href="comingsoon.html" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
+                        <a [routerLink]="['/series']" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
 							Series 
 							</a>
 
                     </li>
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
-                    <li class="loginLink"><a href="#">Mi Cuenta</a></li>
-                    <li class="btn signupLink"><a href="#">Cerrar Sesión</a></li>
+                    <!--<li class="loginLink"><a href="#">Mi Cuenta</a></li>-->
+                    <li class="btn signupLink"><a href="#" onclick="return false;" (click)="cerrar()">Cerrar Sesión</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -75,7 +75,7 @@
         <div class="row">
             <div class="slider-single-item">
                 <div class="movie-item">
-                    <div class="row">
+                    <div class="row" *ngIf="busquedaGenero == false">
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="title-in">
                                 <div class="cate">
@@ -104,6 +104,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row" *ngIf="busquedaGenero == true">
+                        <div class="col-md-8 col-sm-12 col-xs-12">
+                            <div class="title-in">
+                                <h1><a href="#" onclick="return false;">Género: {{nombreGenero}}</a></h1>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -124,7 +133,7 @@
                             <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir </a>
                         </div>
                         <div class="hvr-inner2">
-                            <a > Trailer </a>
+                            <a> Trailer </a>
                         </div>
                         <div class="mv-item-infor">
                             <h6><a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]">{{pelicula.name_Movie}}</a></h6>
@@ -160,7 +169,7 @@
     <div class="row">
         <div class="flex-parent-ft">
             <div class="flex-child-ft item1">
-                <a href="index-2.html"><img class="logo" src="../../assets/cartelera/images/Logo.png" alt=""></a>
+                <a href="index-2.html"><img class="logo" src="assets/cartelera/images/Logo.png" alt=""></a>
             </div>
             <div class="flex-child-ft item2">
                 <h4>© Copyright CineXtreme 2020. Todos los derechos reservados</h4>
@@ -168,5 +177,37 @@
         </div>
     </div>
 </footer>
-<!-- end of footer v2 section-->
-<div id="scriptsTemp"> </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+
+            <div class="modal-body">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                <!-- 16:9 aspect ratio -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .swal2-popup {
+        font-size: 1.6rem !important;
+    }
+</style>

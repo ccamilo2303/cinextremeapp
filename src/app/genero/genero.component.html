@@ -51,15 +51,15 @@
 
                     </li>
                     <li class="dropdown first">
-                        <a href="comingsoon.html" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
+                        <a [routerLink]="['/series']" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
 							Series 
 							</a>
 
                     </li>
                 </ul>
                 <ul class="nav navbar-nav flex-child-menu menu-right">
-                    <li class="loginLink"><a href="#">Mi Cuenta</a></li>
-                    <li class="btn signupLink"><a href="#">Cerrar Sesión</a></li>
+                    <!--<li class="loginLink"><a href="#">Mi Cuenta</a></li>-->
+                    <li class="btn signupLink"><a href="#" onclick="return false;" (click)="cerrar()">Cerrar Sesión</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

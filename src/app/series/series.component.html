@@ -1,0 +1,78 @@
+<!-- BEGIN | Header -->
+<header class="ht-header full-width-hd">
+    <!--preloading-->
+    <div id="preloader">
+        <img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="20%" height=auto>
+        <div id="status">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!--end of preloading-->
+    <div class="row">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header logo">
+                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Menú de navegación</span>
+                    <div id="nav-icon1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <a [routerLink]="['/cartelera']"><img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="80%" height="58"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav flex-child-menu menu-left">
+                    <li>
+                        <a class="btn btn-default" [routerLink]="['/cartelera']">
+							Películas 
+							</a>
+                    </li>
+
+                    <li class="dropdown first">
+                        <a [routerLink]="['/series']" class="btn btn-default " data-toggle="dropdown" data-hover="dropdown">
+							Series 
+							</a>
+
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav flex-child-menu menu-right">
+                    <!--<li class="loginLink"><a href="#">Mi Cuenta</a></li>-->
+                    <li class="btn signupLink"><a href="#" onclick="return false;" (click)="cerrar()">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <!-- search form -->
+    </div>
+
+</header>
+
+
+<div class="page-single-2">
+    <div class="container">
+        <div class="row ipad-width">
+            <div class="left-content">
+                <h1>Proximamente</h1>
+                <p>Estamos trabajando arduamente para lograrlo.</p>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+
+                        <!--<h3>Notificarme</h3>
+                        <form action="#">
+                            <input class="email" type="text" placeholder="Ingresa tu correo electronico.">
+                            <input class="redbtn" type="submit" placeholder="Envíar">
+                        </form>-->
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <img class="cm-img" src="http://cinextreme.co/assets/img/cm-img.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

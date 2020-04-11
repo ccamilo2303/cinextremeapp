@@ -109,6 +109,12 @@ export class GeneroComponent implements OnInit {
     this.router.navigate(['/genero', id, name]);
   }
 
+  cerrar(){
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem(environment.nameToken);
+    window.location.href =  environment.ipCinextremeBase;
+  }
+
   async loadScript() {
 
     for (let x of this.scripts) {
@@ -118,7 +124,7 @@ export class GeneroComponent implements OnInit {
       node.async = true;
       node.charset = 'utf-8';
       document.getElementById('scriptsTemp').appendChild(node);
-      await sleep(5);
+      await sleep(400);
     }
 
   }
