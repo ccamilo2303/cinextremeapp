@@ -96,6 +96,11 @@ export class CarteleraComponent implements OnInit {
     });
   }
 
+   urlActual(){
+    var urlRedireccion = window.location.href;
+    localStorage.setItem('url', urlRedireccion);
+  
+  }
 
   pedirPelicula(){
     Swal.mixin({
@@ -271,6 +276,8 @@ function validador() {
         }
     }
 }*/
+
+
 
 function init() { // makes sure the whole site is loaded 
     console.log("carga");

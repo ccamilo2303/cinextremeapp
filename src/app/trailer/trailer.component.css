@@ -1,0 +1,68 @@
+
+
+
+.trailer{
+    background-color: #010910;
+    
+    box-shadow: 0px 1px 2px rgba(0,0,0, 0.3);
+}
+
+.trailer h3{
+    
+    padding: 0 10px; 
+    margin-bottom: 10px; 
+    color:#fff;
+    padding-top: 15px;
+    
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#play {
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+
+.stroke-solid {
+  stroke-dashoffset: 0;
+  stroke-dashArray: 300;
+  stroke-width: 4px;
+  transition: stroke-dashoffset 1s ease, 
+              opacity 1s ease;
+}
+
+.icon {
+  transform: scale(.8);
+  transform-origin: 50% 50%;
+  transition: transform 200ms ease-out;
+}
+
+
+#play:hover .stroke-solid  {
+  opacity: 1;
+  stroke-dashoffset: 300;
+  
+}
+    
+#play:hover .stroke-solid .icon  {
+    transform: scale(.9);
+  }
+  
+
+.reproducir{
+  text-align: center;
+}
+
+
+rect {
+  width: 100%;
+  height: 100%;
+  stroke-width: 5px;
+  opacity: 0;
+}

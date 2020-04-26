@@ -113,13 +113,13 @@
 
 @media (min-width: 992px) {
     .container {
-        width: 970px;
+        width: 1030px;
     }
 }
 
 @media (min-width: 1200px) {
     .container {
-        width: 1170px;
+        width: 1250px;
     }
 }
 
@@ -4791,7 +4791,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: inherit;
-    width: 170px;
+    width: 220px;
     position: relative;
     margin-right: 23px;
 }
@@ -4803,12 +4803,11 @@ ul {
 
 .movie-item-style-1 .hvr-inner {
     position: absolute;
-    top: 0;
     background-color: #dd003f;
     padding: 8px 15px;
     text-align: center;
-    margin-left: 30px;
-    margin-top: 80px;
+    margin-left: 56px;
+    margin-top: 115px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
@@ -4827,7 +4826,7 @@ ul {
 
 @media (max-width: 991px) {
     .movie-item-style-1 .hvr-inner {
-        margin-left: 0;
+        margin-left: 20;
     }
 }
 
@@ -4846,12 +4845,11 @@ ul {
 
 .movie-item-style-1 .hvr-inner2 {
     position: absolute;
-    top: 0;
     background-color: #dcf836;
     padding: 8px 15px;
     text-align: center;
-    margin-left: 40px;
-    margin-top: 150px;
+    margin-left: 69px;
+    margin-top: 170px;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
@@ -4870,7 +4868,7 @@ ul {
 
 @media (max-width: 991px) {
     .movie-item-style-1 .hvr-inner2 {
-        margin-left: 0;
+        margin-left: 20;
     }
 }
 
@@ -4920,8 +4918,8 @@ ul {
 
 @media (max-width: 767px) {
     .movie-item-style-1 {
-        margin-left: 15px;
-        max-width: 170px;
+        margin-left: 80px;
+        max-width: 220px;
     }
 }
 
@@ -4968,7 +4966,7 @@ ul {
 
 @media (max-width: 767px) {
     .mv-grid-fw {
-        max-width: 200px;
+        max-width: 400px;
     }
 }
 
@@ -6646,7 +6644,7 @@ ul {
 }
 
 .page-single {
-    background-color: #020d18;
+    background-color: #010910;
     padding: 75px 0;
 }
 
@@ -8126,6 +8124,7 @@ p.ceb-single {
     padding-bottom: 0;
     padding-top: 180px;
     overflow: hidden;
+    background-size: cover;
 }
 
 .sliderv2 .movie-item .title-in {

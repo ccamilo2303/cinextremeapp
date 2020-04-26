@@ -83,7 +83,7 @@
                     <div class="movie-item-style-2 movie-item-style-1" *ngFor="let pelicula of peliculas | paginate: { itemsPerPage: 20, currentPage: p }">
                         <img [src]="pelicula.url_Img" alt="">
                         <div class="hvr-inner">
-                            <a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir <i class="ion-android-arrow-dropright"></i> </a>
+                            <a (click)="urlActual()" [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]"> Reproducir <i class="ion-android-arrow-dropright"></i> </a>
                         </div>
                         <div class="mv-item-infor">
                             <h6><a [routerLink]="['/pelicula/', pelicula.id_Tmdb, pelicula.name_Movie]">{{pelicula.name_Movie}}</a></h6>

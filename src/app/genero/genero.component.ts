@@ -65,7 +65,12 @@ export class GeneroComponent implements OnInit {
     this.loadScript();
 
   }
-
+  
+  urlActual(){
+    var urlRedireccion = window.location.href;
+    localStorage.setItem('url', urlRedireccion);
+  
+  }
   pedirPelicula() {
     Swal.mixin({
       input: 'text',

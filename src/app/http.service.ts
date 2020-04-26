@@ -27,6 +27,12 @@ export class HttpService {
     
   }
 
+  consultarTrailer(id){
+
+    return this.httpClient.get(environment.ipServicio+'trailer/'+id);
+    
+  }
+
   consultarGeneros(){
 
     return this.httpClient.get(environment.ipServicio+'lista-generos');

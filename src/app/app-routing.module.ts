@@ -4,6 +4,7 @@ import { CarteleraComponent } from './cartelera/cartelera.component';
 import { GeneroComponent } from './genero/genero.component';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { SeriesComponent } from './series/series.component';
+import { TrailerComponent } from './trailer/trailer.component';
 import {  AuthGuardService as AuthGuard  } from './auth-guard.service';
 
 const routes: Routes = [{
@@ -24,6 +25,11 @@ const routes: Routes = [{
 {
   path: 'series',
   component: SeriesComponent,
+  canActivate: [AuthGuard]
+},
+{
+  path: 'trailer/:idTMDB/:nombre',
+  component: TrailerComponent,
   canActivate: [AuthGuard]
 },
 {
