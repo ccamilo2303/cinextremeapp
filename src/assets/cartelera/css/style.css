@@ -6669,7 +6669,7 @@ ul {
 .social-btn a.parent-btn {
     font-family: 'Dosis', sans-serif;
     font-size: 14px;
-    color: #dd003f;
+    color: #ffffff;
     font-weight: bold;
     text-transform: uppercase;
     margin-right: 35px;
@@ -6687,7 +6687,7 @@ ul {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    border: 1px solid #dd003f;
+    border: 1px solid #ffffff;
     margin-right: 10px;
     font-size: 16px;
 }
@@ -8034,6 +8034,7 @@ p.ceb-single {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 650px;
 }
 
 .slider .movie-item {
@@ -8120,11 +8121,12 @@ p.ceb-single {
 }
 
 .sliderv2 {
-    background: url('http://cinextreme.co/appCine/assets/cartelera/images/uploads/slider-bg2.jpg') no-repeat;
+    background: url('http://cinextreme.co/appCine/assets/cartelera/images/uploads/fondoCartelera.jpg') no-repeat;
     padding-bottom: 0;
     padding-top: 180px;
     overflow: hidden;
     background-size: cover;
+    
 }
 
 .sliderv2 .movie-item .title-in {
@@ -9328,7 +9330,7 @@ header#headerv3-light {
 }
 
 footer {
-    background: url('http://cinextreme.co/appCine/assets/cartelera/images/uploads/ft-bg.jpg') no-repeat;
+    background: #000000;
     background-position: center;
     background-size: cover;
 }
