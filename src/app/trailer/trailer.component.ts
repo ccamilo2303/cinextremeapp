@@ -170,7 +170,3 @@ function init() { // makes sure the whole site is loaded
 
 };
 
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-

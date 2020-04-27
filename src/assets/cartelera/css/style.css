@@ -4918,7 +4918,7 @@ ul {
 
 @media (max-width: 767px) {
     .movie-item-style-1 {
-        margin-left: 80px;
+        margin-left: 60px;
         max-width: 220px;
     }
 }
@@ -8139,7 +8139,7 @@ p.ceb-single {
 
 .sliderv2 .movie-item .title-in h1 a {
     font-family: 'Dosis', sans-serif;
-    font-size: 60px;
+    font-size: 45px;
     color: #ffffff;
     font-weight: 700;
     text-transform: uppercase;
@@ -8171,6 +8171,7 @@ p.ceb-single {
 
 .sliderv2 .movie-item .title-in .social-btn {
     margin-bottom: 15px;
+    padding-top: 50px;
 }
 
 .sliderv2 .movie-item .title-in .redbtn {
@@ -9214,7 +9215,7 @@ header#headerv3-light {
 }
 
 .sticky {
-    background-color: #0f2133;
+    background-color: #02060c;
     position: fixed;
     width: 100%;
     z-index: 9999;
@@ -9309,7 +9310,7 @@ header#headerv3-light {
         margin-left: 0 !important;
     }
     header img.logo {
-        width: 18%;
+        width: 30%;
     }
 }
 
@@ -9321,7 +9322,7 @@ header#headerv3-light {
         padding: 10px 0;
     }
     header .navbar-default img.logo {
-        width: 30%;
+        width: 40%;
         margin-top: 5px;
     }
 }

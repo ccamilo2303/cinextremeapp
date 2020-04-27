@@ -1,5 +1,5 @@
 <!-- BEGIN | Header -->
-<header class="ht-header full-width-hd">
+<header class="ht-header sticky full-width-hd">
     <!--preloading-->
     <div id="preloader">
         <img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="20%" height=auto>
@@ -10,12 +10,13 @@
     </div>
     <!--end of preloading-->
     <div class="row">
-        <nav id="mainNav" class="navbar navbar-default navbar-custom">
+        
+        <nav id="mainNav" class="navbar navbar-default navbar-custom ">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header logo">
-                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Menú de navegación</span>
-                    <div id="nav-icon1">
+                    <div  id="nav-icon1" class>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -24,7 +25,7 @@
                 <a [routerLink]="['/cartelera']" (click)="iniciar()"><img class="logo" src="http://cinextreme.co/appCine/assets/cartelera/images/Logo.png" alt="" width="80%" height="58"></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+            <div class="navbar-collapse flex-parent collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 0px;">
                 <ul class="nav navbar-nav flex-child-menu menu-left">
                     <li>
                         <a class="btn btn-default" [routerLink]="['/cartelera']" (click)="iniciar()">
@@ -64,6 +65,7 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+    
         <!-- search form -->
     </div>
 
