@@ -30,6 +30,7 @@ export class CarteleraComponent implements OnInit {
 
   public busquedaGenero:boolean = false;
   public nombreGenero:string = '';
+  public newstr:string;
 
   constructor(private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService, private router: Router) {
     this.ipImagenTMDB = environment.ipImagenTMDB;
@@ -113,7 +114,12 @@ export class CarteleraComponent implements OnInit {
       'Agrega alguna otra descripción u observación'
     ]).then((result) => {
       if (result.value) {
-        this.enviarComentario(JSON.stringify(result.value));
+        let obj = {
+          'token' : null,
+          'nameMovie' : result.value[0],
+          'description' : result.value[1]
+        }
+        this.enviarComentario(JSON.stringify(obj));
         Swal.fire({
           title: 'Gracias!',
           html: `
@@ -133,7 +139,12 @@ export class CarteleraComponent implements OnInit {
   }
 
   enviarComentario(info){
-    console.log("Info: ", info);
+     
+    this.newstr = info.split('{').join('').split('}').join('');
+    console.log("Info: ", this.newstr);
+    this.httpService.solicitudPelicula(this.newstr).subscribe((r: Array<string>) =>{
+      
+    });
   }
   /**
    * 

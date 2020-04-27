@@ -49,4 +49,8 @@ export class HttpService {
     return this.httpClient.get(environment.ipServicio+'valsuscripcion?email='+email);
   }
 
+  solicitudPelicula(info){
+    return this.httpClient.get(environment.ipServicio+'pedir-pelicula?'+info);
+  }
+
 }

@@ -55,14 +55,32 @@
   }
   
 
-.reproducir{
-  text-align: center;
-}
-
-
 rect {
   width: 100%;
   height: 100%;
   stroke-width: 5px;
   opacity: 0;
+}
+
+
+
+@media (min-width: 1200px) {
+  .reproducir {
+     padding-top: 330px;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .reproducir{
+    padding-top: 90px;
+  }
+}
+
+
+
+@media (max-width: 767px) {
+  .reproducir{
+    padding-top: 130px;
+  }
 }
