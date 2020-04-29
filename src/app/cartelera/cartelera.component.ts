@@ -114,10 +114,12 @@ export class CarteleraComponent implements OnInit {
       'Agrega alguna otra descripción u observación'
     ]).then((result) => {
       if (result.value) {
+        let email = sessionStorage.getItem('email');
         let obj = {
-          'token' : null,
+          '_token' : null,
           'nameMovie' : result.value[0],
-          'description' : result.value[1]
+          'description' : result.value[1],
+          'email' : email
         }
         this.enviarComentario(JSON.stringify(obj));
         Swal.fire({
@@ -140,9 +142,10 @@ export class CarteleraComponent implements OnInit {
 
   enviarComentario(info){
      
-    this.newstr = info.split('{').join('').split('}').join('');
-    console.log("Info: ", this.newstr);
-    this.httpService.solicitudPelicula(this.newstr).subscribe((r: Array<string>) =>{
+    /*this.newstr = info.split('{').join('').split('}').join('');
+    console.log("Info: ", this.newstr);*/
+    console.log("Info:", info);
+    this.httpService.solicitudPelicula(info).subscribe((r) =>{
       
     });
   }
@@ -172,7 +175,7 @@ export class CarteleraComponent implements OnInit {
     
 
   }
-
+ 
   paginaAnterior(){
     this.httpService.consultarCarteleraUrl(this.anterior).subscribe(result => {
       top();
