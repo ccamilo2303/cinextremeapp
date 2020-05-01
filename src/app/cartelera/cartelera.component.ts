@@ -38,9 +38,12 @@ export class CarteleraComponent implements OnInit {
 
   ngOnInit() {
 
-    this.iniciar();
-    
 
+    this.iniciar(false);
+    
+    setTimeout( ()=> {
+        init();
+    }, 500);
 
     this.httpService.consultarGeneros().subscribe(result => {
       this.generos = result;
@@ -54,6 +57,14 @@ export class CarteleraComponent implements OnInit {
   }
   
   consultarGenero(id, name){
+
+    sessionStorage.setItem('genero', 'genero');
+    sessionStorage.setItem('pg', 'genero');
+    sessionStorage.setItem('ps', 'genero');
+    sessionStorage.setItem('idGenero', id);
+    sessionStorage.setItem('nameGenero', name);
+
+    
     this.httpService.consultarPeliculaGenero(id).subscribe((result: Array<string>) => {
       if (result == null || result == undefined) {
         Swal.fire('Error', 'No se puede mostrar la película', 'error');
@@ -76,25 +87,64 @@ export class CarteleraComponent implements OnInit {
     });
   }
 
-  iniciar(){
-    this.httpService.consultarCartelera().subscribe(result => {
-      this.peliculas = result['data'];
-      this.inicio = result['current_page'];
-      this.fin = result['last_page'];
-      this.anterior = result['prev_page_url'];
-      this.siguiente = result['next_page_url'];
-      this.inicioUrl = result['first_page_url'];
-      this.finUrl = result['last_page_url'];
-      this.busquedaGenero = false;
-      this.nombreGenero = '';
-      setTimeout( ()=> {
-        init();
-      }, 1500);
-      
+  iniciar(inicio){
 
-    }, err => {
-      Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
-    });
+    console.log("LO QUE LLEGA : ", inicio);
+    if(inicio != undefined && inicio == true){
+      sessionStorage.removeItem('pg');
+      sessionStorage.removeItem('ps');
+      sessionStorage.removeItem('genero');
+    }
+
+    let pg = sessionStorage.getItem('pg');
+    let ps = sessionStorage.getItem('ps');
+    let genero = sessionStorage.getItem('genero');
+    
+console.log("----> ", pg);
+console.log("----> ", ps);
+
+    if(pg != undefined || pg != null){
+
+      if(ps === 'genero' || genero == 'genero'){
+        let idGenero = sessionStorage.getItem('idGenero');
+        let nameGenero = sessionStorage.getItem('nameGenero');
+        console.log("IDgENERO : ", idGenero, " ---- ", nameGenero);
+        this.consultarGenero(idGenero, nameGenero);
+      }
+
+      if(ps === 'siguiente'){
+        this.siguiente = pg;
+        this.paginaSiguiente();
+      }else if(ps ==='anterior'){
+        this.anterior = pg;
+        this.paginaAnterior();
+      }else if(ps=== 'inicio'){
+        this.inicioUrl = pg;
+        this.paginaInicio();
+      }else if(ps === 'fin'){
+        this.finUrl = pg;
+        this.paginaFin();
+      }
+    
+    }else{
+
+        this.httpService.consultarCartelera().subscribe(result => {
+          this.peliculas = result['data'];
+          this.inicio = result['current_page'];
+          this.fin = result['last_page'];
+          this.anterior = result['prev_page_url'];
+          this.siguiente = result['next_page_url'];
+          this.inicioUrl = result['first_page_url'];
+          this.finUrl = result['last_page_url'];
+          this.busquedaGenero = false;
+          this.nombreGenero = '';
+          
+        
+        
+      }, err => {
+        Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
+      });
+    }
   }
 
    urlActual(){
@@ -177,6 +227,8 @@ export class CarteleraComponent implements OnInit {
   }
  
   paginaAnterior(){
+    sessionStorage.setItem('pg', this.anterior);
+    sessionStorage.setItem('ps', "anterior");
     this.httpService.consultarCarteleraUrl(this.anterior).subscribe(result => {
       top();
       this.cargarPeliculas(result['data']);
@@ -193,6 +245,8 @@ export class CarteleraComponent implements OnInit {
   }
 
   paginaSiguiente(){
+    sessionStorage.setItem('pg', this.siguiente);
+    sessionStorage.setItem('ps', "siguiente");
     this.httpService.consultarCarteleraUrl(this.siguiente).subscribe(result => {
       top();
       this.cargarPeliculas(result['data']);
@@ -208,6 +262,8 @@ export class CarteleraComponent implements OnInit {
   }
 
   paginaInicio(){
+    sessionStorage.setItem('pg', this.inicioUrl);
+    sessionStorage.setItem('ps', "inicio");
     this.httpService.consultarCarteleraUrl(this.inicioUrl).subscribe(result => {
       top();
       this.cargarPeliculas(result['data']);
@@ -223,6 +279,8 @@ export class CarteleraComponent implements OnInit {
   }
 
   paginaFin(){
+    sessionStorage.setItem('pg', this.finUrl);
+    sessionStorage.setItem('ps', "fin");
     this.httpService.consultarCarteleraUrl(this.finUrl).subscribe(result => {
       top();
       this.cargarPeliculas(result['data']);
