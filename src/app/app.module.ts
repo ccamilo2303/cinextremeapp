@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { PeliculaComponent } from './pelicula/pelicula.component';
 import { SeriesComponent } from './series/series.component';
 import { TrailerComponent } from './trailer/trailer.component';
+import { HashLocationStrategy, LocationStrategy, Location, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { TrailerComponent } from './trailer/trailer.component';
     HttpClientModule,
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [{provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

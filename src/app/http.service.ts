@@ -11,7 +11,7 @@ export class HttpService {
 
   consultarCartelera(){
 
-    return this.httpClient.get(environment.ipServicio+'consulta');
+    return this.httpClient.get(environment.ipServicio+'consulta2');
 
   }
   
@@ -41,7 +41,7 @@ export class HttpService {
 
   consultarPeliculaGenero(id){
 
-    return this.httpClient.get(environment.ipServicio+'consulta-genero/'+id);
+    return this.httpClient.get(environment.ipServicio+'consulta-genero2/'+id);
 
   }
   
