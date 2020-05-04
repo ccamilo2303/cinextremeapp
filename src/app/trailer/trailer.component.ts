@@ -29,7 +29,7 @@ export class TrailerComponent implements OnInit {
 
   ngOnInit() {
     this.iniciar();
-
+    this.top();
     this.httpService.consultarTrailer(this.idMovie).subscribe((r: Array<string>) => {
         if (r == null || r == undefined) {
           Swal.fire('Error', 'No se puede mostrar el trailer', 'error');
@@ -53,6 +53,9 @@ export class TrailerComponent implements OnInit {
         init();
       }, 1500);    
     
+  }
+  top(){
+    $("html, body").animate({ scrollTop: 0 }, "slow"); 
   }
 
   movie(){

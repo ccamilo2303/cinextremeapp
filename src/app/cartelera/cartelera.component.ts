@@ -165,21 +165,36 @@ console.log("----> ", ps);
     ]).then((result) => {
       if (result.value) {
         let email = sessionStorage.getItem('email');
-        let obj = {
-          '_token' : null,
-          'nameMovie' : result.value[0],
-          'description' : result.value[1],
-          'email' : email
+        if (result.value[0] == null || result.value[0] == '') {
+          Swal.fire({
+            title: 'Error',
+            html: `
+              No se puede enviar sin el nombre de la pelicula. 
+            `,
+            confirmButtonText: 'Ok!',
+            icon: 'error'
+          })
+        }else{
+          
+          let x = result.value[0] ;
+          x = x.replace(/[?#-()&%$#"=¡¿*{}]/g, "");
+          x = x.trim();
+          result.value[0] = x;
+          let z = result.value[1] ;
+          z = z.replace(/[?#-()&%$#"=¡¿*{}]/g, "");
+          z = z.trim();
+          result.value[1] = z;
+          let obj = {
+            '_token' : null,
+            'nameMovie' : result.value[0],
+            'description' : result.value[1],
+            'email' : email
+          }
+          
+          this.enviarComentario(JSON.stringify(obj));
+         
         }
-        this.enviarComentario(JSON.stringify(obj));
-        Swal.fire({
-          title: 'Gracias!',
-          html: `
-            Trabajaremos para encontrar tu película, nos contactaremos contigo via email para notificarte. 
-          `,
-          confirmButtonText: 'Ok!',
-          icon: 'success'
-        })
+        
       }
     });
   }
@@ -195,7 +210,39 @@ console.log("----> ", ps);
     /*this.newstr = info.split('{').join('').split('}').join('');
     console.log("Info: ", this.newstr);*/
     console.log("Info:", info);
-    this.httpService.solicitudPelicula(info).subscribe((r) =>{
+    this.httpService.solicitudPelicula(info).subscribe(r =>{
+      Swal.fire({
+        title: 'Gracias!',
+        html: `
+          Trabajaremos para encontrar tu película, nos contactaremos contigo via email para notificarte. 
+        `,
+        confirmButtonText: 'Ok!',
+        icon: 'success'
+      })
+    },error=>{
+      
+      
+      if (error['statusText'] == 'OK') {
+        
+        Swal.fire({
+          title: 'Gracias!',
+          html: `
+            Trabajaremos para encontrar tu película, nos contactaremos contigo via email para notificarte. 
+          `,
+          confirmButtonText: 'Ok!',
+          icon: 'success'
+        })
+      }else{
+
+        Swal.fire({
+          title: 'Error',
+          html: `
+            No se ha podido enviar la información, vuelvelo a intentar más tarde. 
+          `,
+          confirmButtonText: 'Ok',
+          icon: 'error'
+        })
+      }
       
     });
   }
@@ -330,7 +377,7 @@ function sleep(ms) {
 }
 
 function top(){
-    //$("html, body").animate({ scrollTop: 400 }, "slow");
+    $("html, body").animate({ scrollTop: 590 }, "slow");
 }
 
 

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { environment } from './../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
+declare var $: any;
 
 
 @Component({
@@ -22,6 +23,7 @@ export class GeneroComponent implements OnInit {
   public id: any;
   public nombre: any;
   public p : any;
+  
 
   constructor(private httpService: HttpService, private theMovieDataBaseService: TheMovieDataBaseService,
     private router: Router, private route: ActivatedRoute) {
@@ -34,7 +36,7 @@ export class GeneroComponent implements OnInit {
         Swal.fire('Error', 'No se puede mostrar la película', 'error');
         return;
       }
-
+      
       this.id = p['id'];
       this.nombre = p['nombre'];
 
@@ -51,6 +53,7 @@ export class GeneroComponent implements OnInit {
       });
 
       this.httpService.consultarGeneros().subscribe(result => {
+        
         this.generos = result;
       }, err => {
         Swal.fire('Error', 'Ocurrió error: ' + err, 'error');
@@ -71,6 +74,8 @@ export class GeneroComponent implements OnInit {
     localStorage.setItem('url', urlRedireccion);
   
   }
+
+  
   pedirPelicula() {
     Swal.mixin({
       input: 'text',
@@ -102,6 +107,7 @@ export class GeneroComponent implements OnInit {
  * 
  * @param pageOfItems 
  */
+
   onChangePage(pageOfItems: Array<any>) {
     // update current page of items
     this.pageOfItems = pageOfItems;
